@@ -1,197 +1,157 @@
 <template>
   <div class="container">
-   <!-- Hero Section -->
-  <div class="img-container">
+  <!-- <div class="img-container">
     <img :src="require('assets/images/Capo.png')" alt="Logo">
+  </div> -->
+  <form>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputEmail4">Email</label>
+      <input type="email" class="form-control" id="inputEmail4">
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputPassword4">Password</label>
+      <input type="password" class="form-control" id="inputPassword4">
+    </div>
   </div>
-  <!-- About Section -->
-
-  <!-- <section class="footer_banner" id="contact">
-    <h2 class="hidden">Footer Banner Section </h2>
-    <p class="hero_header">FOR THE LATEST NEWS &amp; UPDATES</p>
-    <div class="button">subscribe</div>
-  </section> -->
-  <!-- Copyrights Section -->
-
-
-  <!-- <div class="copyright">&copy;2015 - <strong>Light Theme</strong></div> -->
-
+  <div class="form-group">
+    <label for="inputAddress">Address</label>
+    <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+  </div>
+  <div class="form-group">
+    <label for="inputAddress2">Address 2</label>
+    <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputCity">City</label>
+      <input type="text" class="form-control" id="inputCity">
+    </div>
+    <div class="state">
+      <label for="inputState">State</label>
+      <select id="inputState" class="form-control">
+        <option selected>Choose...</option>
+        <option>...</option>
+      </select>
+    </div>
+    <div class="form-group col-md-2">
+      <label for="inputZip">Zip</label>
+      <input type="text" class="form-control" id="inputZip">
+    </div>
+  </div>
+  <div class="form-group">
+  </div>
+  <button type="submit" class="btn btn-primary">Sign in</button>
+</form>
 
 </div>
 <!-- Main Container Ends -->
 </template>
 
-<script>
-
-export default {
-  // layout: "noFooter"
-}
-</script>
-
 <style scoped>
-@charset "UTF-8";
-/* Body */
-body {
-    font-family: source-sans-pro;
-    background-color: #f2f2f2;
-    margin-top: 0px;
-    margin-right: 0px;
-    margin-bottom: 0px;
-    margin-left: 0px;
-    font-style: normal;
-    font-weight: 200;
+
+
+element.style {
 }
-/* Container */
+input {
+    display: block;
+    width: 100%;
+    height: calc(1.5em + .75rem + 2px);
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+#inputEmail4, #inputPassword4 {
+  width: 300px !important;
+}
+
+
+select {
+    display: block;
+    width: 100%;
+    height: calc(1.5em + .75rem + 2px);
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.form-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.state {
+  display: flex;
+  flex-direction: column;
+}
+button {
+  margin: auto;
+    display: inline-block;
+    font-weight: 400;
+    color: #212529;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-color: transparent;
+    border: 1px solid transparent;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: .25rem;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+color: #fff;
+    background-color: #007bff;
+    border-color: #007bff;
+    margin-top: 20px;
+}
+
 .container {
-    background-color: #FFFFFF;
+    /* background-color: #FFFFFF; */
+    background-image: url(~assets/images/Coming-Soon.jpg);
+    height: 100vh;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
+
+form {
+  background-color: transparent;
+  margin: auto;
+  background-color: #f3f3f3;
+  border-radius: 10px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 700px;
+}
+
 
 .img-container {
   display: flex;
   flex-direction: column;
-}
-
-
-/* About Section */
-.text_column {
-    width: 29%;
-    text-align: justify;
-    font-weight: lighter;
-    line-height: 25px;
-    float: left;
-    padding-left: 20px;
-    padding-right: 20px;
-    color: #A3A3A3;
-}
-.about {
-    padding-left: 25px;
-    padding-right: 25px;
-    padding-top: 35px;
-    display: inline-block;
-    background-color: #FFFFFF;
-    margin-top: 0px;
-}
-/* Stats Gallery */
-.stats {
-    color: #717070;
-    margin-bottom: 5px;
-}
-.gallery {
-    clear: both;
-    display: inline-block;
-    width: 100%;
-    background-color: #FFFFFF;
-    /* [disabled]min-width: 400px;
-*/
-    padding-bottom: 35px;
-    padding-top: 0px;
-    margin-top: -5px;
-    margin-bottom: 0px;
-}
-.thumbnail {
-    width: 25%;
-    text-align: center;
-    float: left;
-    margin-top: 35px;
-}
-.gallery .thumbnail h4 {
-    margin-top: 5px;
-    margin-right: 5px;
-    margin-bottom: 5px;
-    margin-left: 5px;
-    color: #52BAD5;
-}
-.gallery .thumbnail p {
-    margin-top: 0px;
-    margin-right: 0px;
-    margin-bottom: 0px;
-    margin-left: 0px;
-    color: #A3A3A3;
-}
-
-/* More info */
-footer {
-    background-color: #FFFFFF;
-    padding-bottom: 35px;
-}
-.footer_column {
-    width: 50%;
-    text-align: center;
-    padding-top: 30px;
-    float: left;
-}
-footer .footer_column h3 {
-    color: #B3B3B3;
-    text-align: center;
-}
-footer .footer_column p {
-    color: #717070;
-    background-color: #FFFFFF;
-}
-.cards {
-    width: 100%;
-    height: auto;
-    max-width: 400px;
-    max-height: 200px;
-}
-footer .footer_column p {
-    padding-left: 30px;
-    padding-right: 30px;
-    text-align: justify;
-    line-height: 25px;
-    font-weight: lighter;
-    margin-left: 20px;
-    margin-right: 20px;
-}
-.button {
-    width: 200px;
-    margin-top: 40px;
-    margin-right: auto;
-    margin-bottom: auto;
-    margin-left: auto;
-    padding-top: 20px;
-    padding-right: 10px;
-    padding-bottom: 20px;
-    padding-left: 10px;
-    text-align: center;
-    vertical-align: middle;
-    border-radius: 0px;
-    text-transform: uppercase;
-    font-weight: bold;
-    letter-spacing: 2px;
-    border: 3px solid #FFFFFF;
-    color: #FFFFFF;
-    transition: all 0.3s linear;
-}
-.button:hover {
-    background-color: #FEFEFE;
-    color: #C4C4C4;
-    cursor: pointer;
-}
-.copyright {
-    text-align: center;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    background-color: black;
-    color: #FFFFFF;
-    text-transform: uppercase;
-    font-weight: lighter;
-    letter-spacing: 2px;
-    border-top-width: 2px;
-}
-.footer_banner {
-    background-color: black;
-    padding-top: 60px;
-    padding-bottom: 60PX;
-    margin-bottom: 0px;
-    /* background-image: url(../images/pattern.png); */
-    background-repeat: repeat;
-}
-footer {
-    display: inline-block;
-}
-.hidden {
-    display: none;
 }
 
 /* Mobile */
