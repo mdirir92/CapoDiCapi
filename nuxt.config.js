@@ -13,6 +13,11 @@ export default {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+    ],
+    script: [
+      { src: 'https://aframe.io/releases/1.0.0/aframe.min.js' },
+      { src: 'https://raw.githack.com/jeromeetienne/AR.js/1.7.5/aframe/build/aframe-ar.js' },
+      { src: 'audiohandler.js' }
     ]
   },
   /*
@@ -28,6 +33,7 @@ export default {
   ** Plugins to load before mounting the App
   */
   plugins: [
+    
   ],
   /*
   ** Nuxt.js dev-modules

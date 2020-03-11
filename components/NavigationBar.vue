@@ -3,7 +3,11 @@
     <!-- Navigation -->
 
     <header>
+      <nuxt-link to="/">
+      <span>
       <img class="logo-cdc" :src="require('assets/images/cdc-banner.png')" alt="Logo" />
+      </span>
+      </nuxt-link>
       <nav>
         <ul>
           <li><a>Clothing</a>
@@ -13,11 +17,16 @@
           <li><a>Accessories</a></li>
               </ul>
           </li>
-          <li><a>Device</a></li>
+          <nuxt-link to="/AR-Experience">
+          <li><a>AR-X</a></li>
+          </nuxt-link>
           <li><a>Blog</a></li>
           <li> <img  :src="require('assets/images/cart.png')" alt="Logo" /></li>
-          
+          <nuxt-link to="/Login-Register">
+          <span>
           <li> <img  :src="require('assets/images/user.png')" alt="Logo" /></li>
+          </span>
+          </nuxt-link>
         </ul>
       </nav>
     </header>

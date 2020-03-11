@@ -12,12 +12,17 @@
     <div class="button">subscribe</div>
   </section> -->
   <!-- Copyrights Section -->
-
+<div class="slide-container">
+    <img :src="require('assets/images/ComingSoon.jpg')" alt="Logo">
+  </div>
 
   <!-- <div class="copyright">&copy;2015 - <strong>Light Theme</strong></div> -->
-
+<div class="img-container">
+    <img :src="require('assets/images/ComingSoon.jpg')" alt="Logo">
+  </div>
 
 </div>
+
 <!-- Main Container Ends -->
 </template>
 

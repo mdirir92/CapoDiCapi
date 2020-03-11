@@ -15,7 +15,7 @@
         <strong>About us</strong>
       </span>
       
-      <nuxt-link to="/Sign-Up">
+      <nuxt-link to="/Contact-Us">
       <span>
         <strong>Contact us</strong>
       </span>
@@ -63,7 +63,15 @@ cursor: pointer;
 
 }
 
+a{
+  text-decoration: none;
+  color: white;
 
+}
+
+a:hover{
+  color: #2c9ab7;
+}
 
 .imgContainer{
     display: flex;
