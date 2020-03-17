@@ -18,6 +18,7 @@ export default {
       { src: 'https://aframe.io/releases/1.0.0/aframe.min.js' },
       { src: 'https://raw.githack.com/jeromeetienne/AR.js/1.7.5/aframe/build/aframe-ar.js' },
       { src: 'audiohandler.js' }
+      
     ]
   },
   /*

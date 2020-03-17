@@ -1,4 +1,5 @@
 <template>
+<html lang="en">
   <div class="container">
    <!-- Hero Section -->
   <div class="img-container">
@@ -12,9 +13,7 @@
     <div class="button">subscribe</div>
   </section> -->
   <!-- Copyrights Section -->
-<div class="slide-container">
-    <img :src="require('assets/images/ComingSoon.jpg')" alt="Logo">
-  </div>
+
 
   <!-- <div class="copyright">&copy;2015 - <strong>Light Theme</strong></div> -->
 <div class="img-container">
@@ -23,14 +22,23 @@
 
 </div>
 
+</html>
+
 <!-- Main Container Ends -->
 </template>
 
 <script>
-
-export default {
-  // layout: "noFooter"
-}
+  export default {
+    // ...
+    methods: {
+      prev() {
+        this.$refs.myCarousel.prev()
+      },
+      next() {
+        this.$refs.myCarousel.next()
+      }
+    }
+  }
 </script>
 
 <style scoped>
@@ -54,6 +62,25 @@ body {
 .img-container {
   display: flex;
   flex-direction: column;
+}
+
+.carousel.pointer-event {
+    -ms-touch-action: pan-y;
+    touch-action: pan-y;
+}
+.carousel {
+    position: relative;
+}
+
+.carousel-inner::after {
+    display: block;
+    clear: both;
+    content: "";
+}
+
+svg {
+    overflow: hidden;
+    vertical-align: middle;
 }
 
 
