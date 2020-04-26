@@ -1,41 +1,136 @@
 <template>
-  <div class="container">
-    <!-- Navigation -->
-
+  <div class="container-header">
     <header>
-      <nuxt-link to="/">
-      <span>
-      <img class="logo-cdc" :src="require('assets/images/cdc-banner.png')" alt="Logo" />
-      </span>
-      </nuxt-link>
-      <nav>
-        <ul>
-          <li><a>Clothing</a>
-              <ul>
-          <li><a>Men</a></li>
-          <li><a>Women</a></li>
-          <li><a>Accessories</a></li>
-              </ul>
-          </li>
-          <nuxt-link to="/AR-Experience">
-          <li><a>AR-X</a></li>
-          </nuxt-link>
-          <li><a>Blog</a></li>
-          <li> <img  :src="require('assets/images/cart.png')" alt="Logo" /></li>
-          <nuxt-link to="/Login-Register">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <nuxt-link to="/" class="navbar-brand">
           <span>
-          <li> <img  :src="require('assets/images/user.png')" alt="Logo" /></li>
+            <img class="logo-cdc img-fluid" src="../assets/images/cdc-banner.png" alt="Logo" />
           </span>
-          </nuxt-link>
-        </ul>
+        </nuxt-link>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item parent-menu">
+              <a href="#">Clothing</a>
+              <div class="sub-menus">
+                <nuxt-link to="/Category/Men" class="dropdown-item">Men</nuxt-link>
+                <nuxt-link to="/Category/Women" class="dropdown-item">Women</nuxt-link>
+                <nuxt-link to="/Category/Accessories" class="dropdown-item">Accessories</nuxt-link>
+              </div>
+            </li>
+            <div class="mob-sub-menu">
+              <div class="mob-dropdown">
+                <nuxt-link to="/Category/Men" class="dropdown-item">Men</nuxt-link>
+                <nuxt-link to="/Category/Women" class="dropdown-item">Women</nuxt-link>
+                <nuxt-link to="/Category/Accessories" class="dropdown-item">Accessories</nuxt-link>
+              </div>
+            </div>
+            <li class="nav-item">
+              <nuxt-link to="/AR-Experience">AR-X</nuxt-link>
+            </li>
+            <li class="nav-item">
+              <nuxt-link to="/Blog">Blog</nuxt-link>
+            </li>
+            <li v-if="user && user.user_type === 'admin'" class="nav-item">
+              <nuxt-link to="/Products/AddProduct">Product</nuxt-link>
+            </li>
+            <li v-if="user && user.user_type === 'admin'" class="nav-item">
+              <nuxt-link to="/TotalTransactionList">Transaction</nuxt-link>
+            </li>
+            <li class="relative nav-item">
+              <nuxt-link to="/Cart">
+                <img src="../assets/images/cart.png" class="img-fluid" alt="Logo" />
+                <span class="badge badge-primary" v-if="cart.length">
+                  {{
+                  cart.length
+                  }}
+                </span>
+              </nuxt-link>
+            </li>
+            <li class="nav-item" v-if="!user">
+              <nuxt-link to="/Login-Register">
+                <span>
+                  <li>
+                    <img src="../assets/images/user.png" alt="Logo" />
+                  </li>
+                </span>
+              </nuxt-link>
+            </li>
+            <li class="nav-item" v-else>
+              <span @click="logout" class="cursor-pointer">
+                <li>LogOut</li>
+              </span>
+            </li>
+          </ul>
+        </div>
       </nav>
     </header>
   </div>
 </template>
-
-
+<script>
+import firebase from "firebase";
+export default {
+  computed: {
+    cart() {
+      return this.$store.getters.GET_CART;
+    },
+    user() {
+      return this.$store.getters.GET_USER;
+    }
+  },
+  methods: {
+    logout() {
+      firebase.auth().signOut();
+      this.$toaster.success("Logout Successfully...");
+      this.$store.dispatch("CLEAR_USER");
+      this.$router.push("/");
+    }
+  }
+};
+</script>
 
 <style lang="css" scoped>
+.sub-menus {
+  display: none;
+}
+
+.parent-menu:hover .sub-menus {
+  display: block;
+}
+
+.sub-menus {
+  background: #ddd;
+  width: 166px;
+  text-align: center;
+}
+
+.sub-menus a {
+  color: #333;
+}
+
+.relative {
+  position: relative;
+}
+
+.badge {
+  position: absolute;
+  top: 5px;
+  right: -9px;
+  padding: 3px;
+  font-size: 12px;
+  text-align: center;
+}
+
 /* Navigation */
 header {
   width: 100%;
@@ -56,16 +151,16 @@ header {
   margin-left: 25px;
   letter-spacing: 4px;
 }
-nav {
+/* nav {
   float: right;
-  /* width: 50%; */
-  text-align: right;
+ width: 50%;  text-align: right;
   margin-right: 25px;
   margin-top: 15px;
-}
+} */
 header nav ul {
   list-style: none;
-  /* float: right; */
+  position: relative;
+  z-index: 11;
 }
 nav ul li {
   float: left;
@@ -78,7 +173,7 @@ nav ul li {
   transition: all 0.3s linear;
   width: 100px;
 }
-ul{
+ul {
   margin: 0px;
   padding: 0px;
   list-style: none;
@@ -87,39 +182,37 @@ ul li {
   float: left;
   width: 150px;
   height: 40px;
-  opacity: .8;
+  opacity: 0.8;
   line-height: 40px;
   text-align: center;
 }
 
-ul li > img{
+ul li img {
   width: 30px;
   height: 30px;
   vertical-align: middle;
-   cursor: pointer;
+  cursor: pointer;
 }
 ul li a {
   color: #ffffff;
   text-decoration: none;
   display: block;
   font-size: 20px;
-  
 }
 ul li:hover a {
   cursor: pointer;
-  
 }
 
 ul li ul li {
   padding-right: 20px;
-   display: none; 
+  display: none;
   text-align: left;
   background-color: black;
   padding-left: 10px;
   width: 150px;
 }
 
-ul li ul li  > a:hover {
+ul li ul li > a:hover {
   color: #2c9ab7;
 }
 
@@ -136,11 +229,62 @@ ul li:hover ul li {
   letter-spacing: 4px;
 }
 
-.container {
+.head-container {
   background-color: black;
   height: 75px;
 }
 .dropdown-toggle {
   white-space: nowrap;
 }
+
+.bg-dark {
+  background-color: #000 !important;
+}
+.dropdown-menu a {
+  color: #000 !important;
+}
+.cursor-pointer {
+  cursor: pointer;
+}
+.mob-sub-menu {
+  display: none;
+}
+@media (max-width: 992px) {
+  .mob-sub-menu {
+    display: block;
+    background: #ddd;
+    width: 90%;
+    margin: auto;
+    text-align: center;
+  }
+
+  nav ul li {
+    float: unset;
+    color: #ffffff;
+    font-size: 14px;
+    margin-right: 25px;
+    letter-spacing: 2px;
+    font-weight: bold;
+    transition: all 0.3s linear;
+    width: 100%;
+    text-align: center;
+  }
+
+  .sub-menus {
+    display: none;
+  }
+}
+
+/* @media (max-width: 768px) {
+  nav ul li {
+    color: #ffffff;
+    font-size: 14px;
+    margin-right: 25px;
+    letter-spacing: 2px;
+    font-weight: bold;
+    transition: all 0.3s linear;
+    width: 100%;
+    text-align: center;
+  }
+} */
 </style>

@@ -1,93 +1,94 @@
 <template>
   <div class="container">
-  <!-- <div class="img-container">
+    <!-- <div class="img-container">
     <img :src="require('assets/images/Capo.png')" alt="Logo">
-  </div> -->
-  <form>
-  <div class="form-row">
-    <div class="form-group col-md-6">
-      <label for="inputEmail4">Email</label>
-      <input type="email" class="form-control" id="inputEmail4">
-    </div>
-    <div class="form-group col-md-6">
-      <label for="inputPassword4">Password</label>
-      <input type="password" class="form-control" id="inputPassword4">
-    </div>
+    </div>-->
+    <form>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="inputEmail4">Email</label>
+          <input type="email" class="form-control" id="inputEmail4" />
+        </div>
+        <div class="form-group col-md-6">
+          <label for="inputPassword4">Password</label>
+          <input type="password" class="form-control" id="inputPassword4" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="inputAddress">Address</label>
+        <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St" />
+      </div>
+      <div class="form-group">
+        <label for="inputAddress2">Address 2</label>
+        <input
+          type="text"
+          class="form-control"
+          id="inputAddress2"
+          placeholder="Apartment, studio, or floor"
+        />
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="inputCity">City</label>
+          <input type="text" class="form-control" id="inputCity" />
+        </div>
+        <div class="state">
+          <label for="inputState">State</label>
+          <select id="inputState" class="form-control">
+            <option selected>Choose...</option>
+            <option>...</option>
+          </select>
+        </div>
+        <div class="form-group col-md-2">
+          <label for="inputZip">Zip</label>
+          <input type="text" class="form-control" id="inputZip" />
+        </div>
+      </div>
+      <div class="form-group"></div>
+      <button type="submit" class="btn btn-primary">Sign in</button>
+    </form>
   </div>
-  <div class="form-group">
-    <label for="inputAddress">Address</label>
-    <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
-  </div>
-  <div class="form-group">
-    <label for="inputAddress2">Address 2</label>
-    <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
-  </div>
-  <div class="form-row">
-    <div class="form-group col-md-6">
-      <label for="inputCity">City</label>
-      <input type="text" class="form-control" id="inputCity">
-    </div>
-    <div class="state">
-      <label for="inputState">State</label>
-      <select id="inputState" class="form-control">
-        <option selected>Choose...</option>
-        <option>...</option>
-      </select>
-    </div>
-    <div class="form-group col-md-2">
-      <label for="inputZip">Zip</label>
-      <input type="text" class="form-control" id="inputZip">
-    </div>
-  </div>
-  <div class="form-group">
-  </div>
-  <button type="submit" class="btn btn-primary">Sign in</button>
-</form>
-
-</div>
-<!-- Main Container Ends -->
+  <!-- Main Container Ends -->
 </template>
 
 <style scoped>
-
-
 element.style {
 }
 input {
-    display: block;
-    width: 100%;
-    height: calc(1.5em + .75rem + 2px);
-    padding: .375rem .75rem;
-    font-size: 1rem;
-    font-weight: 400;
-    line-height: 1.5;
-    color: #495057;
-    background-color: #fff;
-    background-clip: padding-box;
-    border: 1px solid #ced4da;
-    border-radius: .25rem;
-    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  display: block;
+  width: 100%;
+  height: calc(1.5em + 0.75rem + 2px);
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
-#inputEmail4, #inputPassword4 {
+#inputEmail4,
+#inputPassword4 {
   width: 300px !important;
 }
 
-
 select {
-    display: block;
-    width: 100%;
-    height: calc(1.5em + .75rem + 2px);
-    padding: .375rem .75rem;
-    font-size: 1rem;
-    font-weight: 400;
-    line-height: 1.5;
-    color: #495057;
-    background-color: #fff;
-    background-clip: padding-box;
-    border: 1px solid #ced4da;
-    border-radius: .25rem;
-    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  display: block;
+  width: 100%;
+  height: calc(1.5em + 0.75rem + 2px);
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
 .form-row {
@@ -102,37 +103,38 @@ select {
 }
 button {
   margin: auto;
-    display: inline-block;
-    font-weight: 400;
-    color: #212529;
-    text-align: center;
-    vertical-align: middle;
-    cursor: pointer;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    background-color: transparent;
-    border: 1px solid transparent;
-    padding: .375rem .75rem;
-    font-size: 1rem;
-    line-height: 1.5;
-    border-radius: .25rem;
-    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-color: #fff;
-    background-color: #007bff;
-    border-color: #007bff;
-    margin-top: 20px;
+  display: inline-block;
+  font-weight: 400;
+  color: #212529;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background-color: transparent;
+  border: 1px solid transparent;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: 0.25rem;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  color: #fff;
+  background-color: #007bff;
+  border-color: #007bff;
+  margin-top: 20px;
 }
 
 .container {
-    /* background-color: #FFFFFF; */
-    background-image: url(~assets/images/Coming-Soon.jpg);
-    height: 100vh;
-    background-position: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+  /* background-color: #FFFFFF; */
+  background-image: url(~assets/images/Coming-Soon.jpg);
+  height: 100vh;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 form {
@@ -148,7 +150,6 @@ form {
   width: 700px;
 }
 
-
 .img-container {
   display: flex;
   flex-direction: column;
@@ -156,15 +157,15 @@ form {
 
 /* Mobile */
 @media (max-width: 320px) {
-.logo {
+  .logo {
     width: 100%;
     text-align: center;
     margin-top: 13px;
     margin-right: 0px;
     margin-bottom: 0px;
     margin-left: 0px;
-}
-.container header nav {
+  }
+  .container header nav {
     margin-top: 0px;
     margin-right: 0px;
     margin-bottom: 0px;
@@ -172,33 +173,33 @@ form {
     width: 100%;
     float: none;
     display: none;
-}
-header nav ul {
-}
-nav ul li {
+  }
+  header nav ul {
+  }
+  nav ul li {
     margin-top: 0px;
     margin-right: 0px;
     margin-bottom: 0px;
     margin-left: 0px;
     width: 100%;
     text-align: center;
-}
-.text_column {
+  }
+  .text_column {
     width: 100%;
     text-align: justify;
     padding-top: 0px;
     padding-right: 0px;
     padding-bottom: 0px;
     padding-left: 0px;
-}
-.thumbnail {
+  }
+  .thumbnail {
     width: 100%;
-}
-.footer_column {
+  }
+  .footer_column {
     width: 100%;
     margin-top: 0px;
-}
-.parallax {
+  }
+  .parallax {
     text-align: center;
     margin-top: 0px;
     margin-right: 0px;
@@ -210,8 +211,8 @@ nav ul li {
     padding-left: 0px;
     width: 100%;
     font-size: 18px;
-}
-.parallax_description {
+  }
+  .parallax_description {
     padding-top: 0px;
     padding-right: 0px;
     padding-bottom: 0px;
@@ -223,26 +224,26 @@ nav ul li {
     margin-left: 12px;
     float: none;
     text-align: center;
-}
-.banner {
-    background-color: #2D9AB7;
+  }
+  .banner {
+    background-color: #2d9ab7;
     background-image: none;
-}
-.tagline {
+  }
+  .tagline {
     margin-top: 20px;
     line-height: 22px;
-}
-.hero_header {
+  }
+  .hero_header {
     padding-left: 10px;
     padding-right: 10px;
     line-height: 22px;
     text-align: center;
-}
+  }
 }
 
 /* Small Tablets */
-@media (min-width: 321px)and (max-width: 767px) {
-.logo {
+@media (min-width: 321px) and (max-width: 767px) {
+  .logo {
     width: 100%;
     text-align: center;
     margin-top: 13px;
@@ -250,8 +251,8 @@ nav ul li {
     margin-bottom: 0px;
     margin-left: 0px;
     color: #043745;
-}
-.container header nav {
+  }
+  .container header nav {
     margin-top: 0px;
     margin-right: 0px;
     margin-bottom: 0px;
@@ -261,12 +262,12 @@ nav ul li {
     overflow: auto;
     display: inline-block;
     background: #52bad5;
-}
-header nav ul {
+  }
+  header nav ul {
     padding: 0px;
     float: none;
-}
-nav ul li {
+  }
+  nav ul li {
     margin-top: 0px;
     margin-right: 0px;
     margin-bottom: 0px;
@@ -275,23 +276,23 @@ nav ul li {
     text-align: center;
     padding-top: 8px;
     padding-bottom: 8px;
-}
-.text_column {
+  }
+  .text_column {
     width: 100%;
     text-align: left;
     padding-top: 0px;
     padding-right: 0px;
     padding-bottom: 0px;
     padding-left: 0px;
-}
-.thumbnail {
+  }
+  .thumbnail {
     width: 100%;
-}
-.footer_column {
+  }
+  .footer_column {
     width: 100%;
     margin-top: 0px;
-}
-.parallax {
+  }
+  .parallax {
     text-align: center;
     margin-top: 0px;
     margin-right: 0px;
@@ -303,8 +304,8 @@ nav ul li {
     padding-left: 0px;
     width: 100%;
     font-size: 18px;
-}
-.parallax_description {
+  }
+  .parallax_description {
     padding-top: 0px;
     padding-right: 0px;
     padding-bottom: 0px;
@@ -316,11 +317,11 @@ nav ul li {
     float: none;
     width: 100%;
     text-align: center;
-}
-.thumbnail {
+  }
+  .thumbnail {
     width: 50%;
-}
-.parallax {
+  }
+  .parallax {
     margin-top: 0px;
     margin-right: 0px;
     margin-bottom: 0px;
@@ -329,33 +330,33 @@ nav ul li {
     padding-bottom: 0px;
     padding-left: 0px;
     padding-top: 20%;
-}
-.parallax_description {
+  }
+  .parallax_description {
     margin-top: 0px;
     margin-right: 0px;
     margin-bottom: 0px;
     margin-left: 0px;
     width: 100%;
     padding-top: 30px;
-}
-.banner {
+  }
+  .banner {
     padding-left: 20px;
     padding-right: 20px;
-}
-.footer_column {
+  }
+  .footer_column {
     width: 100%;
-}
+  }
 }
 
 /* Small Desktops */
 @media (min-width: 768px) and (max-width: 1096px) {
-.text_column {
+  .text_column {
     width: 100%;
-}
-.thumbnail {
+  }
+  .thumbnail {
     width: 50%;
-}
-.text_column {
+  }
+  .text_column {
     width: 100%;
     margin-top: 0px;
     margin-right: 0px;
@@ -365,10 +366,10 @@ nav ul li {
     padding-right: 0px;
     padding-bottom: 0px;
     padding-left: 0px;
-}
-.banner {
+  }
+  .banner {
     margin-top: 0px;
     padding-top: 0px;
-}
+  }
 }
 </style>

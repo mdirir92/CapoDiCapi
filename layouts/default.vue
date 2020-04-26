@@ -1,27 +1,51 @@
 <template>
   <div>
-    <NavigationBar/>
+    <NavigationBar />
     <nuxt />
-    <Footer/>
-    
-
+    <Footer />
   </div>
 </template>
 
 <script>
-import NavigationBar from "~/components/NavigationBar.vue"
-import Footer from "~/components/Footer.vue"
+import NavigationBar from "~/components/NavigationBar.vue";
+import Footer from "~/components/Footer.vue";
+import firebase from "firebase";
 export default {
   components: {
     NavigationBar,
     Footer
+  },
+  mounted() {},
+  created() {
+    if (this.$store.getters.GET_PRODUCTS.length === 0) {
+      this.$store.dispatch("LOAD_PRODUCTS");
+    }
+
+    let vm = this;
+
+    firebase.auth().onAuthStateChanged(user => {
+      if (user) {
+        const user_id = user.uid;
+        const db = firebase.firestore().collection("users");
+        db.where("user_id", "==", user_id)
+          .get()
+          .then(snapShot => {
+            snapShot.forEach(doc => {
+              const id = doc.id;
+              vm.$store.dispatch("ADD_USER", id);
+            });
+          });
+      } else {
+        vm.$store.dispatch("CLEAR_USER");
+      }
+    });
   }
-}
+};
 </script>
 <style>
 html {
-  font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI',
-    Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-family: "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif;
   font-size: 16px;
   word-spacing: 1px;
   -ms-text-size-adjust: 100%;
@@ -29,6 +53,13 @@ html {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   box-sizing: border-box;
+}
+
+body {
+  background: url(../assets/images/opaquecapo.png) no-repeat;
+  background-size: cover;
+  height: 100%;
+  background-position: center;
 }
 
 *,
@@ -65,5 +96,8 @@ html {
 .button--grey:hover {
   color: #fff;
   background-color: #35495e;
+}
+.container {
+  padding-bottom: 100px !important;
 }
 </style>
