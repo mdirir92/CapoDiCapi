@@ -24,12 +24,14 @@ export default {
   name: "Men",
   computed: {
     products() {
+      // get the products accoring to category
       return this.$store.getters.GET_WOMEN_CAT;
     }
   },
   methods: {
     addToCart(product) {
       this.$toaster.success("Added to cart");
+      // add product to cart
       this.$store.dispatch("ADD_TO_CART", product);
     }
   }

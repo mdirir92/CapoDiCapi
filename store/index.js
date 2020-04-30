@@ -71,7 +71,6 @@ export const actions = {
         }
       });
     });
-    // return state.products.push(payload);
   },
   ADD_TO_CART: (context, payload) => {
     context.commit("ADD_TO_CART", payload);
@@ -84,6 +83,7 @@ export const actions = {
   },
   ADD_USER(context, payload) {
     const db = firebase.firestore().collection("users");
+    // get the user from firebase payload == id of the user
     db.doc(payload)
       .get()
       .then(res => {

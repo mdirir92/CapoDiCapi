@@ -48,19 +48,13 @@
             <div class="col-12">
               <div class="form-grou">
                 <label for>Address:</label>
-                <textarea
-                  rows="4"
-                  v-model="address"
-                  class="form-control"
-                ></textarea>
+                <textarea rows="4" v-model="address" class="form-control"></textarea>
               </div>
             </div>
           </div>
           <div class="panel-body my-3">
             <div id="card-element" class="form-control"></div>
-            <button class="btn btn-danger mt-3" @click="submitForm">
-              Submit
-            </button>
+            <button class="btn btn-danger mt-3" @click="submitForm">Submit</button>
           </div>
         </div>
       </div>
@@ -88,12 +82,15 @@ export default {
     };
   },
   created() {
+    // if the cart is empty then redirect to home
     if (this.cart.length === 0) {
       this.$router.push("/");
     }
   },
   mounted() {
+    // adding the stripe public api key
     this.stripe = Stripe("pk_test_cbyahGsI029JM0rOzbDi3cAz00cUYw6ij0");
+    // load the stripe input filed to the DOM
     this.createAndMountFormElements();
     this.amount = this.totalPrice;
   },
@@ -106,18 +103,24 @@ export default {
   },
   methods: {
     createAndMountFormElements() {
+      // creating the stripe input field
       var elements = this.stripe.elements();
       this.cardElement = elements.create("card");
       this.cardElement.mount("#card-element");
     },
     submitForm() {
+      // validating if all the fields are entered
       if (this.validation()) {
+        // creating the stripe token
         this.stripe.createToken(this.cardElement).then(result => {
+          // checking fro error
           if (result.error) {
             this.$toaster.warning("Can't Connect to server...");
           } else {
+            // if there is token
             const token = result.token.id;
             let loader = this.$loading.show();
+            // sending the token and amount to laravel backend api for further processing
             axios
               .post("https://cnm.capodicapi.london/public/api/stripe", {
                 stripeToken: token,
@@ -125,10 +128,9 @@ export default {
               })
               .then(res => {
                 if (res.data === "success") {
+                  // after the purchase is done adding the detail to firebase
                   this.$toaster.success("Purchase done...");
-
                   const db = firebase.firestore().collection("transaction");
-
                   let current_datetime = new Date();
                   let formatted_date =
                     current_datetime.getDate() +
@@ -136,7 +138,6 @@ export default {
                     (current_datetime.getMonth() + 1) +
                     "-" +
                     current_datetime.getFullYear();
-
                   db.add({
                     totalPrice: this.amount,
                     customer_id: this.user.user_id,
@@ -150,6 +151,7 @@ export default {
                     date: formatted_date
                   }).then(res => {
                     loader.hide();
+                    // after all of that clearing the cart and back to home page
                     this.$store.dispatch("CLEAR_CART");
                     this.$router.push("/");
                   });

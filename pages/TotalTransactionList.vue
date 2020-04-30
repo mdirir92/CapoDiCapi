@@ -50,6 +50,7 @@ export default {
   created() {
     const db = firebase.firestore().collection("transaction");
 
+    // load all the transactions from the firebase
     db.onSnapshot(snapshot => {
       snapshot.docChanges().forEach(change => {
         if (change.type == "added") {
@@ -66,6 +67,7 @@ export default {
     deleteTrans(id, index) {
       const db = firebase.firestore().collection("transaction");
 
+      // deleting the transaction from firebase
       db.doc(id)
         .delete()
         .then(() => {
@@ -73,6 +75,7 @@ export default {
         });
     },
     deleteByIndex(index) {
+      // removing from the dom
       this.orders.splice(index, 1);
     }
   }

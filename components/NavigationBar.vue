@@ -21,7 +21,7 @@
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item parent-menu">
-              <a href="#">Clothing</a>
+              <nuxt-link to="#">Clothing</nuxt-link>
               <div class="sub-menus">
                 <nuxt-link to="/Category/Men" class="dropdown-item">Men</nuxt-link>
                 <nuxt-link to="/Category/Women" class="dropdown-item">Women</nuxt-link>
@@ -82,16 +82,20 @@ import firebase from "firebase";
 export default {
   computed: {
     cart() {
+      // getting all the carts from vuex
       return this.$store.getters.GET_CART;
     },
     user() {
+      // get the current user
       return this.$store.getters.GET_USER;
     }
   },
   methods: {
     logout() {
+      // logout user
       firebase.auth().signOut();
       this.$toaster.success("Logout Successfully...");
+      // clear the user in vuex
       this.$store.dispatch("CLEAR_USER");
       this.$router.push("/");
     }
@@ -100,6 +104,12 @@ export default {
 </script>
 
 <style lang="css" scoped>
+.container-header {
+  position: fixed;
+  z-index: 1111;
+  top: 0;
+  width: 100%;
+}
 .sub-menus {
   display: none;
 }
@@ -272,6 +282,13 @@ ul li:hover ul li {
 
   .sub-menus {
     display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .logo-cdc {
+    width: 180px;
+    height: auto;
   }
 }
 

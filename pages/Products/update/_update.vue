@@ -32,12 +32,7 @@
               <div class="col-6">
                 <div class="form-group">
                   <label>Category</label>
-                  <select
-                    name
-                    id
-                    class="custom-select"
-                    v-model="product.category"
-                  >
+                  <select name id class="custom-select" v-model="product.category">
                     <option value="men">Men</option>
                     <option value="women">Women</option>
                     <option value="accessories">Accessories</option>
@@ -47,12 +42,7 @@
               <div class="col-6">
                 <div class="form-group">
                   <label>Quantity</label>
-                  <select
-                    name
-                    id
-                    class="custom-select"
-                    v-model="product.quantity"
-                  >
+                  <select name id class="custom-select" v-model="product.quantity">
                     <option :value="n" v-for="n in 20" :key="n">{{ n }}</option>
                   </select>
                 </div>
@@ -71,9 +61,7 @@
               </div>
             </div>
             <div class="col-12">
-              <button class="btn btn-primary" @click="addProduct">
-                Edit Product
-              </button>
+              <button class="btn btn-primary" @click="addProduct">Edit Product</button>
             </div>
           </div>
           <div class="col-md-4">
@@ -82,15 +70,8 @@
                 <div class="image-placeholder" v-if="!product.image"></div>
                 <img :src="product.image" alt v-else class="img-fluid" />
                 <p class="text-danger" v-if="error">{{ error }}</p>
-                <button class="btn-primary btn mt-3" @click="uploadImage">
-                  Add Product Image
-                </button>
-                <input
-                  type="file"
-                  ref="selectImage"
-                  class="d-none"
-                  @change="getFile"
-                />
+                <button class="btn-primary btn mt-3" @click="uploadImage">Add Product Image</button>
+                <input type="file" ref="selectImage" class="d-none" @change="getFile" />
               </div>
             </div>
           </div>
@@ -125,12 +106,15 @@ export default {
       this.$refs.selectImage.click();
     },
     getFile() {
+      // get the image file
       const pic = event.target.files[0];
+      // create url for image preview
       const url = URL.createObjectURL(pic);
       this.product.image = url;
       this.prodImage = pic;
     },
     validation() {
+      // validating if all the values are available
       if (
         this.product.category &&
         this.product.quantity &&
@@ -145,12 +129,16 @@ export default {
     },
     addProduct() {
       if (this.validation()) {
+        // if validation is true
+        // check if the user chenage the image
         if (this.prodImage) {
           this.uploadImageFirebase();
         } else {
+          // if user do not change the image
           this.UpdateProduct(this.product.image);
         }
       } else {
+        // if validation is missing somethinf
         this.feedback = "Please Fill all the fields...";
         setTimeout(() => {
           this.feedback = null;
@@ -159,7 +147,9 @@ export default {
     },
     uploadImageFirebase() {
       let loader = this.$loading.show();
+      // creating random number represent id of the image and to create the relation with the current product
       const random = Math.round(Math.random() * 9999999999);
+      // creating reference with the firebase storage
       const storageRef = firebase.storage().ref("products/" + random + ".jpg");
       const task = storageRef.put(this.prodImage);
       task.on(
@@ -167,10 +157,13 @@ export default {
         snapShot => {},
         err => console.log(err),
         () => {
+          // getting the url of the image when it is successfully updated
           storageRef.getDownloadURL().then(url => {
             const db = firebase.firestore();
+            // find the product from the given id provided the route params (update === id)
             db.collection("products")
               .doc(this.$route.params.update)
+              // updating the values of the product
               .update({
                 title: this.product.title,
                 price: this.product.price,
@@ -183,6 +176,7 @@ export default {
               .then(() => {
                 loader.hide();
                 this.$toaster.success("Product Updated...");
+                // redirect to home page
                 this.$router.push("/");
               })
               .catch(err => console.log(err));
@@ -190,10 +184,10 @@ export default {
         }
       );
     },
+    // this will execute if user not change the product image
     UpdateProduct(image) {
       let loader = this.$loading.show();
       const db = firebase.firestore();
-      console.log(this.product);
       db.collection("products")
         .doc(this.$route.params.update)
         .update({
@@ -208,7 +202,6 @@ export default {
         .then(() => {
           loader.hide();
           this.$router.push("/");
-          // console.log("Product Data Updated");
           this.$toaster.success("Product Updated...");
         })
         .catch(err => console.log(err));
@@ -220,8 +213,8 @@ export default {
     }
   },
   created() {
+    // load the specific product from firebase according to id
     const id = this.$route.params.update;
-
     const db = firebase.firestore();
     db.collection("products")
       .doc(id)

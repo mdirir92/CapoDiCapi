@@ -49,30 +49,36 @@ export default {
       this.$refs.selectImage.click();
     },
     getFile() {
+      // get the image file
       const pic = event.target.files[0];
+      // create url for preview
       const url = URL.createObjectURL(pic);
       this.url = url;
       this.image = pic;
     },
     addBlog() {
+      // check for image
       if (!this.image) {
+        // if no image then random (id) and the url of image will be null
         this.addToFirebase(null, null);
       } else {
+        // random is like the id of the image to identify and make the relation to current blog
         const random = Date.now();
+        // craeting the reference to firebase firestore
         const storageRef = firebase
           .storage()
           .ref("blogImages/" + random + ".jpg");
-
         const task = storageRef.put(this.image);
-
         task.on(
           "state_changed",
           snapShot => {},
           err => console.log(err),
           () => {
+            // get the url of the image
             storageRef
               .getDownloadURL()
               .then(url => {
+                // pass url to the firestore to save it
                 this.addToFirebase(url, random);
               })
               .catch(err => {
@@ -84,8 +90,9 @@ export default {
       }
     },
     addToFirebase(image, image_id) {
+      // make reference to the firestore
       const db = firebase.firestore().collection("blogs");
-
+      // formating date
       let current_datetime = new Date();
       let formatted_date =
         current_datetime.getDate() +
@@ -93,7 +100,7 @@ export default {
         (current_datetime.getMonth() + 1) +
         "-" +
         current_datetime.getFullYear();
-
+      // pass the values to firestore
       db.add({
         title: this.title,
         description: this.description,
@@ -102,10 +109,12 @@ export default {
         image_id
       })
         .then(() => {
+          // return to blogs page after successfully added the blog
           this.$toaster.success("Blog Added");
           this.$router.push("/Blog");
         })
         .catch(err => {
+          //if there is some error
           this.$toaster.error("Something Went Wrong");
           console.log(err);
         });

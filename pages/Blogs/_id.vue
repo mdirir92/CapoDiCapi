@@ -52,30 +52,35 @@ export default {
       this.$refs.selectImage.click();
     },
     getFile() {
+      // get the image file
       const pic = event.target.files[0];
+      // create the url to preview the image
       const url = URL.createObjectURL(pic);
       this.url = url;
       this.image = pic;
     },
     addBlog() {
+      // checking if the user added the image bcz image is optional
       if (!this.image) {
         this.addToFirebase(this.blog.image, this.blog.image_id);
       } else {
+        // random is like the id of the image to identify and make the relation to that blog
         const random = this.blog.image_id;
+        // create the reference to firebase storeage to store tha image
         const storageRef = firebase
           .storage()
           .ref("blogImages/" + random + ".jpg");
-
         const task = storageRef.put(this.image);
-
         task.on(
           "state_changed",
           snapShot => {},
           err => console.log(err),
           () => {
+            // this will run when image is saved to firebase and get the url of the image to save in the firestore
             storageRef
               .getDownloadURL()
               .then(url => {
+                // save the blod to firebase
                 this.addToFirebase(url, random);
               })
               .catch(err => {
@@ -88,7 +93,7 @@ export default {
     },
     addToFirebase(image, image_id) {
       const db = firebase.firestore().collection("blogs");
-
+      // get the blog from id provided the route params and update it
       db.doc(this.$route.params.id)
         .update({
           title: this.blog.title,
@@ -98,6 +103,7 @@ export default {
           image_id
         })
         .then(() => {
+          // after the blog is saved
           this.$toaster.success("Blog Updated");
           this.$router.push("/Blog");
         })
@@ -108,8 +114,8 @@ export default {
     }
   },
   created() {
+    // load the specific blogssss
     const db = firebase.firestore().collection("blogs");
-
     db.doc(this.$route.params.id)
       .get()
       .then(data => {

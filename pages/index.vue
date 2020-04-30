@@ -2,7 +2,7 @@
   <div class="bg-white">
     <!-- Hero Section -->
     <div class="img-container">
-      <img src="@/assets/images/Capo.png" alt="Logo" />
+      <img src="@/assets/images/Capo.png" alt="Logo" class="img-fluid" />
     </div>
     <!-- About Section -->
 
@@ -41,8 +41,8 @@ export default {
     },
     next() {
       this.$refs.myCarousel.next();
-    },
-  },
+    }
+  }
 };
 </script>
 
@@ -61,9 +61,26 @@ body {
 }
 /* Container */
 
+.img-fluid {
+  height: 76vh;
+}
+
+@media (max-width: 500px) {
+  .img-fluid {
+    height: 67vh;
+  }
+}
+
+@media (max-width: 370px) {
+  .img-fluid {
+    height: 63vh;
+  }
+}
+
 .img-container {
   display: flex;
   flex-direction: column;
+  margin-top: -20px;
 }
 
 .selector-for-some-widget {

@@ -61,9 +61,7 @@
               </div>
             </div>
             <div class="col-12">
-              <button class="btn btn-primary" @click="addProduct">
-                Add Product
-              </button>
+              <button class="btn btn-primary" @click="addProduct">Add Product</button>
             </div>
           </div>
           <div class="col-md-4">
@@ -72,15 +70,8 @@
                 <div class="image-placeholder" v-if="!url"></div>
                 <img :src="url" alt v-else class="img-fluid" />
                 <p class="text-danger" v-if="error">{{ error }}</p>
-                <button class="btn-primary btn mt-3" @click="uploadImage">
-                  Add Product Image
-                </button>
-                <input
-                  type="file"
-                  ref="selectImage"
-                  class="d-none"
-                  @change="getFile"
-                />
+                <button class="btn-primary btn mt-3" @click="uploadImage">Add Product Image</button>
+                <input type="file" ref="selectImage" class="d-none" @change="getFile" />
               </div>
             </div>
           </div>
@@ -111,12 +102,15 @@ export default {
       this.$refs.selectImage.click();
     },
     getFile() {
+      // get the image file
       const pic = event.target.files[0];
+      // create url to preview image
       const url = URL.createObjectURL(pic);
       this.url = url;
       this.prodImage = pic;
     },
     validation() {
+      // validation the fields
       if (
         this.category &&
         this.quantity &&
@@ -131,8 +125,10 @@ export default {
     },
     addProduct() {
       if (this.validation() && this.prodImage) {
+        // if all the fields are correct
         this.uploadImageFirebase();
       } else {
+        // if something is missing
         this.feedback = "Please Fill all the fields...";
         setTimeout(() => {
           this.feedback = null;
@@ -140,7 +136,9 @@ export default {
       }
     },
     uploadImageFirebase() {
+      // creating random number represent id of the image and to create the relation with the current product
       const random = Math.round(Math.random() * 9999999999);
+      // creating reference with the firebase storage
       const storageRef = firebase.storage().ref("products/" + random + ".jpg");
       const task = storageRef.put(this.prodImage);
       let loader = this.$loading.show();
@@ -149,8 +147,10 @@ export default {
         snapShot => {},
         err => console.log(err),
         () => {
+          // getting the url of the image when it is successfully updated
           storageRef.getDownloadURL().then(url => {
             const db = firebase.firestore();
+            // add the product to the firebase
             db.collection("products")
               .add({
                 title: this.title,

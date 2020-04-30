@@ -47,30 +47,38 @@ export default {
   },
   computed: {
     carts() {
+      // carts from vuex
       return this.$store.getters.GET_CART;
     },
     totalPrice() {
+      // total price
       return this.$store.getters.GET_CART_TOTAL_PRICE;
     },
     ...mapGetters({
+      // get the user from vuex
       user: "GET_USER"
     })
   },
   methods: {
     removeItem(id) {
+      // removing the specific cart
       this.$toaster.success("Item Removed from cart");
       this.$store.dispatch("REMOVE_ITEM_CART", id);
     },
     clearAllCart() {
+      // clear all the cart
       this.$toaster.success("Cart cleared");
       this.$store.dispatch("CLEAR_CART");
     },
     checkOut() {
+      // check if the user is logged in or not
       if (!this.user) {
         this.$toaster.warning("You Need to Create an account first...!!!");
+        // checking if the cart is not empty
       } else if (this.carts.length === 0) {
         this.$toaster.warning("You must add something to cart...");
       } else {
+        // redirect to checkout page
         this.$router.push("/checkout");
       }
     }
