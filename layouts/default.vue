@@ -114,4 +114,10 @@ body {
 .container {
   padding-bottom: 100px !important;
 }
+
+@media (max-width: 500px) {
+  .container {
+    padding-bottom: 150px !important;
+  }
+}
 </style>

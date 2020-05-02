@@ -18,12 +18,7 @@
           <div class="col-12">
             <div class="form-group">
               <label for>Message</label>
-              <textarea
-                cols="30"
-                rows="5"
-                class="form-control"
-                v-model="message"
-              ></textarea>
+              <textarea cols="30" rows="5" class="form-control" v-model="message"></textarea>
             </div>
           </div>
           <button class="btn btn-primary mt-0">Submit</button>
@@ -68,6 +63,13 @@ export default {
           });
       } else {
         this.$toaster.error("Plase fill all the fields");
+      }
+    },
+    created() {
+      // closing navbar
+      const nav = document.querySelector(".navbar-collapse.collapse.show");
+      if (nav) {
+        nav.classList.remove("show");
       }
     }
   }

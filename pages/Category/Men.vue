@@ -35,6 +35,12 @@ export default {
       this.$store.dispatch("ADD_TO_CART", product);
     }
   }
+  // created() {
+  //   const nav = window.document.querySelector(".navbar-collapse.collapse.show");
+  //   if (nav) {
+  //     nav.classList.remove("show");
+  //   }
+  // }
 };
 </script>
 

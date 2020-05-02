@@ -19,10 +19,10 @@
       </a-marker>
       <a-entity camera></a-entity>
     </a-scene>
-
-
   </div>
 </template>
 <script>
-export default {};
+export default {
+  created() {}
+};
 </script>

@@ -34,7 +34,8 @@ export default {
       // add product to cart
       this.$store.dispatch("ADD_TO_CART", product);
     }
-  }
+  },
+  created() {}
 };
 </script>
 

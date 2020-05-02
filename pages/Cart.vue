@@ -82,7 +82,8 @@ export default {
         this.$router.push("/checkout");
       }
     }
-  }
+  },
+  created() {}
 };
 </script>
 

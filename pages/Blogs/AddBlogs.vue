@@ -119,7 +119,8 @@ export default {
           console.log(err);
         });
     }
-  }
+  },
+  created() {}
 };
 </script>
 

@@ -42,7 +42,8 @@ export default {
     next() {
       this.$refs.myCarousel.next();
     }
-  }
+  },
+  created() {}
 };
 </script>
 

@@ -1,93 +1,64 @@
 <template>
-  <div>
-    <head>
-      <meta charset="utf-8" />
-      <title></title>
-      <!-- <link rel="stylesheet" href="style.css" /> -->
-    </head>
-    <div class="page-container py-5">
-      <div class="login-box pt-4">
-        <div class="button-box">
-          <div ref="btn" id="btn"></div>
-          <button type="button" class="toggle-btn" @click="login()">
-            Log In
-          </button>
-          <button type="button" class="toggle-btn" @click="register()">
-            Register
-          </button>
-        </div>
-        <div class="social-icons">
-          <img src="../assets/images/FB.png" alt="Logo" />
-          <img src="../assets/images/Twitter.png" alt="Logo" />
-          <img src="../assets/images/FB.png" alt="Logo" />
-        </div>
-        <div class="form-box">
-          <div ref="login" id="login" class="input-group">
-            <div class="textbox">
-              <i class="fas fa-user"></i>
-              <input
-                type="email"
-                placeholder="Email"
-                required
-                v-model="LoginEmail"
-              />
-            </div>
-            <div class="textbox">
-              <i class="fas fa-lock"></i>
-              <input
-                type="password"
-                placeholder="Password"
-                required
-                v-model="LoginPassword"
-              />
-            </div>
-            <div class="checkbox">
-              <input type="checkbox" class="check-box" />
-              <span>Remember Password</span>
-            </div>
-            <p class="text-danger" v-if="error">{{ error }}</p>
-            <!-- <input type="button" class="btn" value="Sign in" /> -->
-            <button class="btn" @click="LOGIN()">Login</button>
+<div>
+  <head>
+    <meta charset="utf-8" />
+    <title></title>
+    <!-- <link rel="stylesheet" href="style.css" /> -->
+  </head>
+  <div class="page-container py-5">
+    <div class="login-box pt-4">
+      <div class="button-box">
+        <div ref="btn" id="btn"></div>
+        <button type="button" class="toggle-btn" @click="login()">Log In</button>
+        <button type="button" class="toggle-btn" @click="register()">Register</button>
+      </div>
+      <div class="social-icons">
+        <img src="../assets/images/FB.png" alt="Logo" />
+        <img src="../assets/images/Twitter.png" alt="Logo" />
+        <img src="../assets/images/FB.png" alt="Logo" />
+      </div>
+      <div class="form-box">
+        <div ref="login" id="login" class="input-group">
+          <div class="textbox">
+            <i class="fas fa-user"></i>
+            <input type="email" placeholder="Email" required v-model="LoginEmail" />
           </div>
-          <div ref="register" id="register" class="input-group">
-            <div class="textbox">
-              <i class="fas fa-user"></i>
-              <input
-                type="text"
-                placeholder="Username"
-                required
-                v-model="SignUserName"
-              />
-            </div>
-            <div class="textbox">
-              <i class="fas fa-lock"></i>
-              <input
-                type="email"
-                placeholder="Email Id"
-                required
-                v-model="SignEmail"
-              />
-            </div>
-            <div class="textbox">
-              <i class="fas fa-lock"></i>
-              <input
-                type="password"
-                placeholder="Enter Password"
-                required
-                v-model="SignPassword"
-              />
-            </div>
-            <!-- <div class="checkbox">
+          <div class="textbox">
+            <i class="fas fa-lock"></i>
+            <input type="password" placeholder="Password" required v-model="LoginPassword" />
+          </div>
+          <div class="checkbox">
+            <input type="checkbox" class="check-box" />
+            <span>Remember Password</span>
+          </div>
+          <p class="text-danger" v-if="error">{{ error }}</p>
+          <!-- <input type="button" class="btn" value="Sign in" /> -->
+          <button class="btn" @click="LOGIN()">Login</button>
+        </div>
+        <div ref="register" id="register" class="input-group">
+          <div class="textbox">
+            <i class="fas fa-user"></i>
+            <input type="text" placeholder="Username" required v-model="SignUserName" />
+          </div>
+          <div class="textbox">
+            <i class="fas fa-lock"></i>
+            <input type="email" placeholder="Email Id" required v-model="SignEmail" />
+          </div>
+          <div class="textbox">
+            <i class="fas fa-lock"></i>
+            <input type="password" placeholder="Enter Password" required v-model="SignPassword" />
+          </div>
+          <!-- <div class="checkbox">
               <input type="checkbox" class="check-box" />
               <span id="terms">I agree to the terms & conditions</span>
           </div>-->
-            <button class="btn" @click="SIGNUP()">Register</button>
-            <div></div>
-          </div>
+          <button class="btn" @click="SIGNUP()">Register</button>
+          <div></div>
         </div>
       </div>
     </div>
   </div>
+</div>
 </template>
 
 <script>
@@ -181,7 +152,8 @@ export default {
           });
       }
     }
-  }
+  },
+  created() {}
 };
 </script>
 

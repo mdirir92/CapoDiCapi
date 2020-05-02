@@ -18,7 +18,7 @@
         >
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
+        <div class="collapse navbar-collapse" id="navbarNav" ref="navBarHide">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item parent-menu">
               <nuxt-link to="#">Clothing</nuxt-link>
@@ -98,6 +98,13 @@ export default {
       // clear the user in vuex
       this.$store.dispatch("CLEAR_USER");
       this.$router.push("/");
+    }
+  },
+
+  watch: {
+    $route() {
+      let navbar = this.$refs.navBarHide;
+      navbar.classList.remove("show");
     }
   }
 };
