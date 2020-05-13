@@ -104,7 +104,10 @@ export default {
   watch: {
     $route() {
       let navbar = this.$refs.navBarHide;
-      navbar.classList.remove("show");
+      // let navbar = document.querySelector("#navbarNav");
+      if (navbar) {
+        navbar.classList.remove("show");
+      }
     }
   }
 };

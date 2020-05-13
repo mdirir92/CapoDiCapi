@@ -4,18 +4,7 @@
     <div class="card">
       <div class="card-body">
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut,
-          voluptatem, deleniti eaque eum fugiat blanditiis maxime molestiae
-          nostrum dolorum dicta, ipsum aperiam illo non distinctio iure ipsa
-          quod delectus odio quo eos sit nesciunt possimus pariatur. Autem
-          nostrum quis voluptate velit quia, molestias temporibus blanditiis
-          recusandae, adipisci veniam expedita enim maxime, reprehenderit earum
-          suscipit perspiciatis. Omnis adipisci in aliquam possimus harum
-          laboriosam accusamus at repellat soluta, maxime vero perferendis
-          deleniti iusto expedita iure amet dignissimos, corporis nobis
-          voluptate corrupti? Cupiditate sapiente optio inventore reprehenderit
-          provident exercitationem assumenda et labore non sit modi quo dicta a
-          perferendis aspernatur, iste veniam? Hic!
+          CAPO DI CAPI is a luxury streatwear brand that was found in 2019 in south London, CAPO DI CAPI stands for bossman in all over the globe! We create our own rules. We are here to redefine the luxury streetwear industry.  
         </p>
       </div>
     </div>

@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-white">
+ 
     <!-- Hero Section -->
     <div class="img-container">
       <img src="@/assets/images/Capo.png" alt="Logo" class="img-fluid" />
@@ -27,7 +27,7 @@
       <b-carousel-slide caption="Second Slide" img-src="https://picsum.photos/1024/480/?image=12"></b-carousel-slide>
       <b-carousel-slide caption="Third Slide" img-src="https://picsum.photos/1024/480/?image=22"></b-carousel-slide>
     </b-carousel>-->
-  </div>
+  
 
   <!-- Main Container Ends -->
 </template>
