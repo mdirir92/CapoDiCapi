@@ -28,8 +28,8 @@
       <div class="col-md-3">
         <div class="images">
           <img @click="fb" :src="require('assets/images/FB.png')" alt="Logo" />
-          <img @click="fb" :src="require('assets/images/Twitter.png')" alt="Logo" />
-          <img @click="fb" :src="require('assets/images/Youtube.png')" alt="Logo" />
+          <img @click="tw" :src="require('assets/images/Twitter.png')" alt="Logo" />
+          <img @click="yt" :src="require('assets/images/Youtube.png')" alt="Logo" />
           <img clas @click="ig" :src="require('assets/images/instagram.png')" alt="Logo" />
         </div>
       </div>
@@ -58,11 +58,17 @@
 export default {
   methods: {
     fb: function() {
-      window.open("https://www.facebook.com/King.Sosathapirate");
+      window.open("https://www.facebook.com/CapoDiCapiLondon/");
     },
 
     ig: function() {
-      window.open("https://www.instagram.com/capodicapildn/");
+      window.open("https://www.instagram.com/capodicapilondon/");
+    },
+    yt: function() {
+      window.open("https://www.youtube.com/channel/UC72Ou6SktRL-8MuBgFxUA-w?view_as=subscriber");
+    },
+     yt: function() {
+      window.open("https://twitter.com/capodicapildn");
     }
   }
 };

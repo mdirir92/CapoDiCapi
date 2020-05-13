@@ -2,6 +2,9 @@
   <div>
     <NavigationBar />
     <nuxt class="paddint-top" />
+     <!-- <div class="body">
+      <img src="@/assets/images/opaquecapo.png" alt="Logo" class="img-fluid" />
+    </div> -->
     <Footer />
   </div>
 </template>
@@ -59,11 +62,35 @@ html {
   box-sizing: border-box;
 }
 
+.img-fluid {
+  height:max-content;
+}
+
+@media (max-width: 500px) {
+  .img-fluid {
+    height: max-content;
+  }
+}
+
+@media (max-width: 370px) {
+  .img-fluid {
+    height: max-content;
+  }
+}
+
+/* .img-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: -20px;
+} */
 body {
   background: url(../assets/images/opaquecapo.png) no-repeat;
-  background-size: cover;
-  height: 100%;
+  background-size:cover;
+  height:max-content;
   background-position: center;
+  display: flex;
+  flex-direction: column;
+  
 }
 
 @media (max-width: 768.98px) {

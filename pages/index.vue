@@ -63,18 +63,18 @@ body {
 /* Container */
 
 .img-fluid {
-  height: 76vh;
+  height:max-content;
 }
 
 @media (max-width: 500px) {
   .img-fluid {
-    height: 67vh;
+    height: max-content;
   }
 }
 
 @media (max-width: 370px) {
   .img-fluid {
-    height: 63vh;
+    height: max-content;
   }
 }
 
