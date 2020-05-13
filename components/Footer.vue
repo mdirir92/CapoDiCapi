@@ -65,9 +65,9 @@ export default {
       window.open("https://www.instagram.com/capodicapilondon/");
     },
     yt: function() {
-      window.open("https://www.youtube.com/channel/UC72Ou6SktRL-8MuBgFxUA-w?view_as=subscriber");
+      window.open("https://www.youtube.com/user/capodicapi");
     },
-     yt: function() {
+     tw: function() {
       window.open("https://twitter.com/capodicapildn");
     }
   }

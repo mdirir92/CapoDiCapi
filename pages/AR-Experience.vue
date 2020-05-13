@@ -1,4 +1,5 @@
 <template>
+<!-- (Animation – A-Frame, n.d.) -->
   <div class style="margin-top:100px;">
     <a-scene arjs=" debugUIEnabled: false;">
       <a-assets>
@@ -20,6 +21,7 @@
       <a-entity camera></a-entity>
     </a-scene>
   </div>
+  <!-- A-Frame. n.d. Animation – A-Frame. [online] Available at: <https://aframe.io/docs/1.0.0/components/animation.html> [Accessed 13 May 2020]. -->
 </template>
 <script>
 export default {

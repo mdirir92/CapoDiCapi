@@ -68,13 +68,13 @@ body {
 
 @media (max-width: 500px) {
   .img-fluid {
-    height: max-content;
+    height: 67vh;
   }
 }
 
 @media (max-width: 370px) {
   .img-fluid {
-    height: max-content;
+    height: 63vh;
   }
 }
 
