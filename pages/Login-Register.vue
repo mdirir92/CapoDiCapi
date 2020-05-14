@@ -13,9 +13,9 @@
         <button type="button" class="toggle-btn" @click="register()">Register</button>
       </div>
       <div class="social-icons">
-        <img src="../assets/images/FB.png" alt="Logo" />
-        <img src="../assets/images/Twitter.png" alt="Logo" />
-        <img src="../assets/images/FB.png" alt="Logo" />
+        <!-- <img src="../assets/images/FB.png" alt="Logo" />
+        <img src="../assets/images/Twitter.png" alt="Logo" /> -->
+        <!-- <img src="../assets/images/FB.png" alt="Logo" /> -->
       </div>
       <div class="form-box">
         <div ref="login" id="login" class="input-group">
