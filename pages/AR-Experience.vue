@@ -21,6 +21,7 @@
       <a-entity camera></a-entity>
     </a-scene>
   </div>
+  <!-- Reference -->
   <!-- A-Frame. n.d. Animation – A-Frame. [online] Available at: <https://aframe.io/docs/1.0.0/components/animation.html> [Accessed 13 May 2020]. -->
 </template>
 <script>
